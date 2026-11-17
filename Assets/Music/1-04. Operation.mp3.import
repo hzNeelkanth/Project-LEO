@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://8m3f70ft7684"
+path="res://.godot/imported/1-04. Operation.mp3-00766b1c718a261a697533771a8b951a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/1-04. Operation.mp3"
+dest_files=["res://.godot/imported/1-04. Operation.mp3-00766b1c718a261a697533771a8b951a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

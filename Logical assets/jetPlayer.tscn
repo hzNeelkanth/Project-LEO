@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dotg802i1kshe"]
+
+[ext_resource type="Script" uid="uid://c81qdoecgfkce" path="res://Scripts/Player scripts/jet_player.gd" id="1_mh0rq"]
+[ext_resource type="Script" uid="uid://d0ortjee2kbug" path="res://Scripts/Player scripts/detection.gd" id="2_mh0rq"]
+[ext_resource type="PackedScene" uid="uid://cg442pho052x7" path="res://Assets/Player ship/ProtoLEO_spacecraft.glb" id="3_d5gpx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_18dxi"]
+size = Vector3(3.4511719, 9.187561, 2.0610352)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_skkk3"]
+radius = 1.1588271
+
+[node name="jetPlayer" type="CharacterBody3D" unique_id=520217768]
+script = ExtResource("1_mh0rq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=535007434]
+transform = Transform3D(1, 0, 0, 0, 0.8582148, 0.5132907, 0, -0.5132907, 0.8582148, 0, 3.8923435, 6.083567)
+keep_aspect = 0
+doppler_tracking = 2
+current = true
+fov = 104.281654
+near = 0.031
+far = 80000.0
+
+[node name="jetCollision" type="CollisionShape3D" parent="." unique_id=386143469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.103271484, 0.8333048, 0.133492)
+shape = SubResource("BoxShape3D_18dxi")
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1498208843]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 0, 0)
+script = ExtResource("2_mh0rq")
+
+[node name="DetectionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=1480110231]
+shape = SubResource("SphereShape3D_skkk3")
+
+[node name="Missile" type="Marker3D" parent="." unique_id=900376054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6424512, 0.42074955, -0.6179867)
+
+[node name="Turret" type="Marker3D" parent="." unique_id=2132679141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.798728, 0.42725408, -0.6871433)
+
+[node name="jet_model" parent="." unique_id=131670762 instance=ExtResource("3_d5gpx")]
+transform = Transform3D(-0.6, 0, -5.2453668e-08, 0, 0.6, 0, 5.2453668e-08, 0, -0.6, 0, 0, 0.098499954)

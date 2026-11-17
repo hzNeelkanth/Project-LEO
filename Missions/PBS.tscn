@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://6u224wbxvyum"]
+
+[ext_resource type="Script" uid="uid://bjklr7s12qavn" path="res://Scripts/level.gd" id="1_rtr24"]
+[ext_resource type="Texture2D" uid="uid://dyamx42jswpw" path="res://Assets/Background/Skärmavbild 2026-10-24 kl. 12.49.43.png" id="2_cgi8s"]
+[ext_resource type="PackedScene" uid="uid://dotg802i1kshe" path="res://Logical assets/jetPlayer.tscn" id="3_t02bu"]
+[ext_resource type="AudioStream" uid="uid://8m3f70ft7684" path="res://Assets/Music/1-04. Operation.mp3" id="4_pt05x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wu3c"]
+size = Vector3(1822.1143, 1, 1064.8198)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tfpn"]
+albedo_color = Color(0.4056504, 0.44749218, 0.12758124, 1)
+albedo_texture = ExtResource("2_cgi8s")
+metallic = 1.0
+clearcoat_enabled = true
+clearcoat = 0.4
+clearcoat_roughness = 1.0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3s5oi"]
+data = PackedVector3Array(-911.0572, 0.5, 532.4099, 911.0572, 0.5, 532.4099, -911.0572, -0.5, 532.4099, 911.0572, 0.5, 532.4099, 911.0572, -0.5, 532.4099, -911.0572, -0.5, 532.4099, 911.0572, 0.5, -532.4099, -911.0572, 0.5, -532.4099, 911.0572, -0.5, -532.4099, -911.0572, 0.5, -532.4099, -911.0572, -0.5, -532.4099, 911.0572, -0.5, -532.4099, 911.0572, 0.5, 532.4099, 911.0572, 0.5, -532.4099, 911.0572, -0.5, 532.4099, 911.0572, 0.5, -532.4099, 911.0572, -0.5, -532.4099, 911.0572, -0.5, 532.4099, -911.0572, 0.5, -532.4099, -911.0572, 0.5, 532.4099, -911.0572, -0.5, -532.4099, -911.0572, 0.5, 532.4099, -911.0572, -0.5, 532.4099, -911.0572, -0.5, -532.4099, 911.0572, 0.5, 532.4099, -911.0572, 0.5, 532.4099, 911.0572, 0.5, -532.4099, -911.0572, 0.5, 532.4099, -911.0572, 0.5, -532.4099, 911.0572, 0.5, -532.4099, -911.0572, -0.5, 532.4099, 911.0572, -0.5, 532.4099, -911.0572, -0.5, -532.4099, 911.0572, -0.5, 532.4099, 911.0572, -0.5, -532.4099, -911.0572, -0.5, -532.4099)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2tfpn"]
+
+[sub_resource type="Sky" id="Sky_6wu3c"]
+resource_local_to_scene = true
+resource_name = "aky"
+sky_material = SubResource("ProceduralSkyMaterial_2tfpn")
+
+[sub_resource type="Environment" id="Environment_skkk3"]
+background_mode = 2
+background_energy_multiplier = 1.24
+sky = SubResource("Sky_6wu3c")
+sky_custom_fov = 90.4
+ambient_light_color = Color(0.111238234, 0.34130186, 0.32432598, 1)
+glow_enabled = true
+glow_levels/2 = 0.94
+
+[node name="Testing" type="Node3D" unique_id=171301837]
+script = ExtResource("1_rtr24")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1529280273]
+transform = Transform3D(-0.9135295, 0.3693369, 0.17045267, 0.40673113, 0.8353482, 0.36981502, -0.005801001, 0.40716535, -0.91333604, -184.12863, 1827.7935, 0)
+light_color = Color(1, 1, 0.6745098, 1)
+light_energy = 1.079
+light_indirect_energy = 1.481
+light_volumetric_fog_energy = 2.148
+light_specular = 2.768
+shadow_enabled = true
+directional_shadow_fade_start = 0.865
+directional_shadow_max_distance = 1.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=723861635]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1290656362]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 314.2527, -3.161316, 74.256226)
+mesh = SubResource("BoxMesh_6wu3c")
+surface_material_override/0 = SubResource("StandardMaterial3D_2tfpn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1957127552]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 314.2527, -3.161316, 74.256226)
+shape = SubResource("ConcavePolygonShape3D_3s5oi")
+
+[node name="jetPlayer" parent="." unique_id=520217768 instance=ExtResource("3_t02bu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.655809, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2060936226]
+environment = SubResource("Environment_skkk3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1038247002]
+stream = ExtResource("4_pt05x")
+pitch_scale = 0.35
+mix_target = 1
